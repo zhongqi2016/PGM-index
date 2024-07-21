@@ -11,6 +11,7 @@
 #include <iostream>
 #include <algorithm>
 #include "pgm/pgm_index.hpp"
+#include "eytzinger_search.hpp"
 
 int main() {
     // Generate some random data
@@ -25,10 +26,12 @@ int main() {
 
     // Query the PGM-index
     auto q = 42;
+    EtzingerList<int> etz_list(data);
+    std::cout << data[etz_list.search(q)] << std::endl;
     auto range = index.search(q);
     auto lo = data.begin() + range.lo;
     auto hi = data.begin() + range.hi;
-    std::cout << *std::lower_bound(lo, hi, q);
+    std::cout << *std::lower_bound(lo, hi, q) << std::endl;;
 
     return 0;
 }

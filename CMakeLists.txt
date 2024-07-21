@@ -18,7 +18,8 @@ endif ()
 include_directories(include)
 
 # PGM-index library
-add_library(pgmindexlib INTERFACE)
+add_library(pgmindexlib INTERFACE
+        include/eytzinger_search.hpp)
 target_include_directories(pgmindexlib INTERFACE include/)
 
 find_package(OpenMP)
